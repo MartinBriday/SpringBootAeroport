@@ -25,7 +25,7 @@
 							style="border-radius: 15px;">
 							<div class="card-body p-0">
 								<div class="row g-0">
-									<!-- 									<h2>Passager 1</h2> -->
+<!-- 									<h2>Passager 1</h2> -->
 									<div class="col-lg-6 text-black">
 										<div class="p-5">
 											<h3 class="fw-normal mb-5" style="color: #4835d4;">Informations
@@ -46,7 +46,8 @@
 
 													<div class="form-outline">
 														<label class="form-label" for="form3Examplev3">Prénom*</label>
-														<input type="text" id="form3Examplev3" name="prenom"
+														<input type="text" id="form3Examplev3"
+															name="prenom"
 															class="form-control form-control-lg"
 															value="${ utilisateur.getPrenom() }" disabled />
 
@@ -58,8 +59,8 @@
 											<div class="mb-4 pb-2">
 												<div class="form-outline">
 													<label class="form-label" for="form3Examplev4">Email*</label>
-													<input type="text" id="form3Examplev4" name="email"
-														class="form-control form-control-lg"
+													<input type="text" id="form3Examplev4"
+														name="email" class="form-control form-control-lg"
 														value="${ utilisateur.getEmail() }" disabled />
 												</div>
 											</div>
@@ -132,10 +133,6 @@
 															et Conditions</u></a> du site.
 												</label>
 											</div>
-
-											<button href="infos_passager_supplementaire"
-												class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Ajouter
-												un passager</button>
 											<button type="submit" class="btn btn-light btn-lg"
 												data-mdb-ripple-color="dark">Passer au paiement</button>
 
@@ -149,6 +146,11 @@
 			</div>
 		</section>
 
+		<p>
+			<a class="btn btn-primary" data-bs-toggle="collapse"
+				href="#collapseExample" role="button" aria-expanded="false"
+				aria-controls="collapseExample"> Ajouter un passager </a>
+		</p>
 	</form>
 
 </body>
