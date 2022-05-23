@@ -30,7 +30,7 @@
 				src="https://github.com/MartinBriday/TP1_ORM/blob/main/avion1.PNG"
 				class="mx-auto d-block"> <br>
 			<p>Voyagez en toute sécurité</p>
-
+<p>coucou</p>
 		</div>
 		<h2>Où souhaitez-vous voyager ?</h2>
 		<br>
