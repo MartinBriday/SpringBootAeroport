@@ -13,6 +13,7 @@
 <!-- <link rel="stylesheet" href="../css/style.css"> -->
 
 <%@ include file="menu.jsp"%>
+
 </head>
 
 <body style="padding:  80px">
