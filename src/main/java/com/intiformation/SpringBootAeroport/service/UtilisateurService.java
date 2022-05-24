@@ -8,7 +8,7 @@ public interface UtilisateurService {
     public List<Utilisateur> get();
 	public Utilisateur get(int id);
 	public Utilisateur get(String email);
-	public void save(Utilisateur c);
+	public void save(Utilisateur u);
 	public void delete(int id);
-	public void update(Utilisateur c);
+	public void update(Utilisateur u);
 }

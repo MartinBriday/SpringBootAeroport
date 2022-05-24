@@ -27,9 +27,9 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public void save(Utilisateur c) {
+	public void save(Utilisateur u) {
 
-		utilisateurRepository.save(c);
+		utilisateurRepository.save(u);
 	}
 
 	@Override
@@ -39,9 +39,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public void update(Utilisateur c) {
+	public void update(Utilisateur u) {
 		
-		utilisateurRepository.save(c);
+//		utilisateurRepository.save(c);
+		utilisateurRepository.updateUtilisateurById(u.getId(), u.getNom(), u.getPrenom(), u.getDateNaissance(), u.getAdresse(), u.getNumTel(), u.getEmail());
 		
 	}
 
