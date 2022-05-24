@@ -18,27 +18,6 @@
 
 	<form method="post" action="recupInfo" modelAttribute="passager">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		<input name="volChoisi" value="${ volChoisi }" type="hidden" />
-		<table class="table">
-			<h2>Liste des passagers</h2>
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">Nom</th>
-					<th scope="col">Prénom</th>
-					<th scope="col">Bagages</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="passager" items="${	listePassager }"></c:forEach>
-				<tr>
-					<th scope="row"></th>
-					<td>${passager.getNom() }</td>
-					<td>${passager.getPrenom() }</td>
-					<td>${passager.getListeBagage() }</td>
-				</tr>
-			</tbody>
-		</table>
 		<section class="h-100 h-custom gradient-custom-2">
 			<div class="container py-5 h-100">
 				<div
@@ -166,6 +145,28 @@
 			</div>
 		</section>
 	</form>
+	
+	<input name="idVolChoisi" value="${ idVolChoisi }" type="hidden" />
+		<table class="table">
+			<h2>Liste des passagers</h2>
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">Nom</th>
+					<th scope="col">Prénom</th>
+					<th scope="col">Bagages</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="passager" items="${	listePassager }"></c:forEach>
+				<tr>
+					<th scope="row"></th>
+					<td>${passager.getNom() }</td>
+					<td>${passager.getPrenom() }</td>
+					<td>${passager.getListeBagage() }</td>
+				</tr>
+			</tbody>
+		</table>
 
 </body>
 

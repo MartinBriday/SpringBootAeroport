@@ -5,6 +5,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import com.intiformation.SpringBootAeroport.model.Aeroport;
 import com.intiformation.SpringBootAeroport.model.Passager;
 import com.intiformation.SpringBootAeroport.model.Role;
@@ -24,10 +26,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class MainController
 {
 
@@ -124,35 +130,54 @@ public class MainController
 		return "affichageVols";
 	}
 
-	@PostMapping("/vol_choisi")
-	public String volChoisi(@ModelAttribute("vol") Vol vol, Model m)
+	@GetMapping("/infos_client_passager")
+	public String infos_client_passager()
 	{
-		m.addAttribute("volChoisi", vol);
 		return "infos_client_passager";
 	}
-
-	@GetMapping("/infos_client_passager")
-	public String getReservation_vol(Authentication authentification, Model m)
+	
+	@GetMapping("/infos_client_passager/{idVol}")
+	public String getInfosClient(@PathVariable int idVol, Authentication authentification, Model m)
 	{
+		m.addAttribute("idVolChoisi", idVol);
 		User u = (User) authentification.getPrincipal();
 		Utilisateur ut = utilisateurService.get(u.getUsername());
 		m.addAttribute("utilisateur", ut);
+		
+		log.info("vol : " + idVol);
+		
 		return "infos_client_passager";
 	}
+	
 
-	@PostMapping("/recupInfo")
-	public String recupInfo(@RequestParam("volChoisi") Vol volChoisi, @ModelAttribute("passager") Passager passager,
-			@RequestParam("listePassager") List<Passager> listePassager, Model m, @RequestParam("bouton") String bouton)
+	@PostMapping("/infos_client_passager/{idVolChoisi}/recupInfo")
+	public String recupInfo(@PathVariable("idVolChoisi") int idVolChoisi, @ModelAttribute("passager") Passager passager, Model m, @RequestParam("bouton") int bouton)
 	{
+		List<Passager> listePassager = new ArrayList<Passager>();
 		m.addAttribute("listePassagerFinal", listePassager.add(passager));
-		m.addAttribute("volChoisi", volChoisi);
-		if (bouton == "ajouterPassager")
+		
+		log.info("vol : " + volService.get(idVolChoisi));
+		m.addAttribute("volChoisi", volService.get(idVolChoisi));
+		if (bouton == 1)
 		{
 			return "infos_passager_supplementaire";
 		} else
 		{
 			return "paiement";
 		}
+	}
+	
+
+	@GetMapping("/infos_passager_supplementaire")
+	public String infos_passager_supplementaire()
+	{
+		return "infos_passager_supplementaire";
+	}
+	
+	@GetMapping("/paiement")
+	public String paiement()
+	{
+		return "paiement";
 	}
 
 }

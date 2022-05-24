@@ -24,7 +24,7 @@
         </thead>
         <c:forEach var="vol" items="${ listeVol }">
             <tr>
-                <form method="post" action="vol_choisi" modelAttribute="vol">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <input type="hidden" id="IdVol" name="IdVol" value="${vol.getId()}">
                     <td>
                         <c:out value="${vol.getDateDepart()}"></c:out>
@@ -45,9 +45,9 @@
                         
                     </td>
                     <td>
-                    <button type="submit">Valider/Payer</button>
+                    <a
+						href="infos_client_passager/${ vol.getId() }"><button>Valider/Payer</button></a>
                     </td>
-                </form>
             </tr>
             <br>
         </c:forEach>
