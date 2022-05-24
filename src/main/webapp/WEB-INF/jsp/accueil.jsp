@@ -1,95 +1,77 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-<meta name="viewport" content="width=device-width" />
-
-<title>Avion</title>
-
-   <link href="/css/bootstrap.css" rel="stylesheet" />
-   <link href="/css/coming-sssoon.css" rel="stylesheet" />  
-   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
-   <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
-
-<%@ include file="menu.jsp"%>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>IntiAir</title>
+    
+    <link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/coming-sssoon.css" rel="stylesheet" />    
+    
+    <!--     Fonts     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
 
+ <%@ include file="menu.jsp"%>
+ 
+<div class="main" style="background-image: url('images/airportpic.jpg')">
 
-	<div class="p-3">
-		<div class="side">
-			<h2>Voyage</h2>
+<!--    Change the image source '/images/default.jpg' with your favourite image.     -->
+    
+    <div class="cover black" data-color="black"></div>
+     
+<!--   You can change the black color for the filter with those colors: blue, green, red, orange       -->
 
-			<div></div>
-			<img
-				src="https://github.com/MartinBriday/TP1_ORM/blob/main/avion1.PNG"
-				class="mx-auto d-block"> <br>
-				
-			<p>Voyagez en toute sÃ©curitÃ©</p>
-		
-		</div>
-		<h2>OÃ¹ souhaitez-vous voyager ?</h2>
-		<br>
-		<form method="post">
-			<div class="mb-3">
-				<label for="choixDepart">DÃ©part :</label> <select
-					class="form-select form-select-lg mb-3"
-					aria-label=".form-select-lg example" name="choixDepart"
-					id="choixDepart" size="1">
+    <div class="container">
+        <h1 class="logo cursive">
+            IntiAirline
+        </h1>
+<!--  H1 can have 2 designs: "logo" and "logo cursive"           -->
+        
+        <div class="content">
+            <h4 class="motto">Les billets d'avion les moins chères, pour vos plus belles destinations !</h4>
+            <div class="subscribe">
+                <h5 class="info-text">
+                    Quand souhaitez-vous voyager ?
+                </h5>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 col-sm6-6 col-sm-offset-3 ">
+                        <form class="form-inline" role="form">
+                          <div class="input-group">
+                            <label class="sr-only">Date de départ</label>
+                            <input type="date" class="form-control transparent" placeholder="Choisissez votre date de depart..." required>
+                          </div>
+                          
+                          <div class="input-group">
+                            <label class="sr-only">Date d'arrivée</label>
+                            <input type="date" class="form-control transparent" placeholder="Choisissez votre date de retour..." required>
+                          </div>
+                          <div class="info-text">
+                          <button type="submit" class="btn btn-danger btn-fill">Rechercher</button>
+                          </div>
+                        </form>
 
-					<option value="" disabled selected>AÃ©roport de dÃ©part</option>
-					<option value="1">Paris</option>
-					<option value="2">Lyon</option>
-					<option value="3">New-York</option>
-					<option value="4">Londre</option>
-					<option value="5">Tokyo</option>
-					<option value="6">Berlin</option>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+      <div class="container">
+           Inti Airline. Tous droits réservés
+      </div>
+    </div>
+ </div>
+ </body>
+   <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+   <script src="js/bootstrap.min.js" type="text/javascript"></script>
 
-				</select> <br> <br> <label for="choixDestination">Destination
-					:</label> <select class="form-select form-select-lg mb-3"
-					aria-label=".form-select-lg example" name="choixDestination"
-					id="choixDestination" size="1">
-
-					<option value="" disabled selected>Choisissez votre
-						destination</option>
-					<option value="1">Paris</option>
-					<option value="2">Lyon</option>
-					<option value="3">New-York</option>
-					<option value="4">Londre</option>
-					<option value="5">Tokyo</option>
-					<option value="6">Berlin</option>
-
-				</select>
-			</div>
-		</form>
-		<br>
-
-		<h2>Quand souhaitez-vous voyager ?</h2>
-
-		<div class="input-group mb-4" id="'dateDepart" name="dateDepart"
-			method="post">
-			<input type="date" class="datepicker_input form-control"
-				placeholder="Choisissez votre date de depart" required>
-		</div>
-
-		<div class="input-group mb-4" id="dateArrivee" name="dateArrivee"
-			method="post">
-			<input type="date" class="datepicker_input form-control"
-				placeholder="Choisissez votre date de retour" required>
-		</div>
-		<div class="d-grid gap-2 col-6 mx-auto">
-			<button type="button" class="btn btn-primary btn-sm">Rechercher
-				un vol</button>
-		</div>
-
-	</div>
-</body>
 </html>
