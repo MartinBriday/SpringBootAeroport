@@ -17,10 +17,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<a class="btn btn-secondary" href="/accueil?category=utilisateur">Lister les utilisateurs</a>
+					<a class="btn btn-secondary" href="/admin/index?category=utilisateur">Lister les utilisateurs</a>
 				</div>
 				<div class="col">
-					<a class="btn btn-secondary" href="/accueil?category=vol">Lister les Vols</a>
+					<a class="btn btn-secondary" href="/admin/index?category=vol">Lister les Vols</a>
 				</div>
 <!-- 				<div class="col"> -->
 <!-- 					<a class="btn btn-secondary" href="/produit/form_produit">Ajouter un produit</a> -->
@@ -32,7 +32,10 @@
 		</div>
 	</div>
 	<br>
-	<c:if test="${ param.category != null && param.category == 'utilisateur'}">
+	
+	
+	
+	<c:if test="${ category != null && category == 'utilisateur'}">
 		<div>
 			<table class="table table-dark table-striped">
 				<thead>
@@ -58,40 +61,54 @@
 							<td><c:out value="${ utilisateur.getNumTel() }"></c:out></td>
 							<td><c:out value="${ utilisateur.getEmail() }"></c:out></td>
 							<td>
-								<a href="/admin/delete_utilisateur/${ produit.getId() }">Supprimer</a>
-								<a href="/admin/update_utilisateur?idProduit=${ produit.getId() }">Modifier</a>
-								<a href="/admin/associer_utilisateur?idProduit=${ produit.getId() }">Associer</a>
+								<a class="btn btn-danger" href="/admin/delete_utilisateur/${ utilisateur.getId() }">Supprimer</a>
+								<a class="btn btn-warning" href="/admin/update_utilisateur?idUtilisateur=${ utilisateur.getId() }">Modifier</a>
+<%-- 								<a href="/admin/associer_utilisateur?idProduit=${ produit.getId() }">Associer</a> --%>
 							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
+		<div>
+			<a class="btn btn-primary" href="admin/register_utilisateur_form">Ajouter un utilisateur</a>
+		</div>
 	</c:if>
-	<c:if test="${ param.category != null && param.category == 'vol'}">
+	
+	
+	
+	<c:if test="${ category != null && category == 'vol'}">
 		<div>
 			<table class="table table-dark table-striped">
 				<thead>
 					<tr>
 						<th scope="col">Id</th>
-						<th scope="col">Nom</th>
-						<th scope="col">Adresse</th>
-						<th scope="col">Code Postal</th>
-						<th scope="col">Ville</th>
+						<th scope="col">Aéroport de départ</th>
+						<th scope="col">Date de départ</th>
+						<th scope="col">Heure de départ</th>
+						<th scope="col">Aéroport d'arrivée</th>
+						<th scope="col">Date d'arrivée</th>
+						<th scope="col">Heure d'arrivée</th>
+						<th scope="col">Nb d'escales</th>
+						<th scope="col">Prix</th>
 						<th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="magasin" items="${ listeMagasin }">
+					<c:forEach var="vol" items="${ listeVol }">
 						<tr>
-							<th scope="row"><c:out value="${ magasin.getId() }"></c:out></th>
-							<td><c:out value="${ magasin.getNom() }"></c:out></td>
-							<td><c:out value="${ magasin.getAdresse() }"></c:out></td>
-							<td><c:out value="${ magasin.getCp() }"></c:out></td>
-							<td><c:out value="${ magasin.getVille() }"></c:out></td>
+							<th scope="row"><c:out value="${ vol.getId() }"></c:out></th>
+							<td><c:out value="${ vol.getAeroportDepart().getNom() }"></c:out></td>
+							<td><c:out value="${ vol.getDateDepart() }"></c:out></td>
+							<td><c:out value="${ vol.getHeureDepart() }"></c:out></td>
+							<td><c:out value="${ vol.getAeroportArrivee().getNom() }"></c:out></td>
+							<td><c:out value="${ vol.getDateArrivee() }"></c:out></td>
+							<td><c:out value="${ vol.getHeureArrivee() }"></c:out></td>
+							<td><c:out value="${ vol.getListeExscale().size() }"></c:out></td>
+							<td><c:out value="${ vol.getPrix() }"></c:out></td>
 							<td>
-								<a href="/magasin/delete_magasin/${ magasin.getId() }">Supprimer</a>
-								<a href="/magasin/update_magasin?idMagasin=${ magasin.getId() }">Modifier</a>
+								<a href="/admin/delete_vol/${ vol.getId() }">Supprimer</a>
+								<a href="/admin/update_vol?idVol=${ vol.getId() }">Modifier</a>
 							</td>
 						</tr>
 					</c:forEach>
