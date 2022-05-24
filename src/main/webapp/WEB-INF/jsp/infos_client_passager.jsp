@@ -15,7 +15,10 @@
 </head>
 
 <body class="bg-dark text-white">
-	<form method="post">
+	<form method="post" action="recupInfo" modelAttribute="passager">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	<input name="volChoisi" value="${ volChoisi }" type="hidden"/>
+	
 		<section class="h-100 h-custom gradient-custom-2">
 			<div class="container py-5 h-100">
 				<div
@@ -38,7 +41,7 @@
 														<label class="form-label" for="form3Examplev2">Nom*</label>
 														<input type="text" id="form3Examplev2" name="nom"
 															class="form-control form-control-lg"
-															value="${ utilisateur.getNom() }" disabled />
+															value="${ utilisateur.getNom() }" />
 													</div>
 
 												</div>
@@ -48,7 +51,7 @@
 														<label class="form-label" for="form3Examplev3">Prénom*</label>
 														<input type="text" id="form3Examplev3" name="prenom"
 															class="form-control form-control-lg"
-															value="${ utilisateur.getPrenom() }" disabled />
+															value="${ utilisateur.getPrenom() }" />
 
 													</div>
 
@@ -60,7 +63,7 @@
 													<label class="form-label" for="form3Examplev4">Email*</label>
 													<input type="text" id="form3Examplev4" name="email"
 														class="form-control form-control-lg"
-														value="${ utilisateur.getEmail() }" disabled />
+														value="${ utilisateur.getEmail() }" />
 												</div>
 											</div>
 
@@ -133,11 +136,11 @@
 												</label>
 											</div>
 
-											<button href="infos_passager_supplementaire"
-												class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Ajouter
+											<button name="bouton" type="submit"
+												class="btn btn-light btn-lg" data-mdb-ripple-color="dark" value="ajouterPassager">Ajouter
 												un passager</button>
-											<button type="submit" class="btn btn-light btn-lg"
-												data-mdb-ripple-color="dark">Passer au paiement</button>
+											<button name="bouton" type="submit" class="btn btn-light btn-lg"
+												data-mdb-ripple-color="dark" value="payer">Passer au paiement</button>
 
 										</div>
 									</div>

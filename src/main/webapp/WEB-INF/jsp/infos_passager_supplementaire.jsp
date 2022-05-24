@@ -15,7 +15,30 @@
 </head>
 
 <body class="bg-dark text-white">
-	<form method="post">
+
+	<form method="post" action="recupInfo" modelAttribute="passager">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<input name="volChoisi" value="${ volChoisi }" type="hidden" />
+		<table class="table">
+			<h2>Liste des passagers</h2>
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">Nom</th>
+					<th scope="col">Prénom</th>
+					<th scope="col">Bagages</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="passager" items="${	listePassager }"></c:forEach>
+				<tr>
+					<th scope="row"></th>
+					<td>${passager.getNom() }</td>
+					<td>${passager.getPrenom() }</td>
+					<td>${passager.getListeBagage() }</td>
+				</tr>
+			</tbody>
+		</table>
 		<section class="h-100 h-custom gradient-custom-2">
 			<div class="container py-5 h-100">
 				<div
@@ -25,7 +48,7 @@
 							style="border-radius: 15px;">
 							<div class="card-body p-0">
 								<div class="row g-0">
-<!-- 									<h2>Passager 1</h2> -->
+									<!-- 									<h2>Passager 1</h2> -->
 									<div class="col-lg-6 text-black">
 										<div class="p-5">
 											<h3 class="fw-normal mb-5" style="color: #4835d4;">Informations
@@ -37,8 +60,7 @@
 													<div class="form-outline">
 														<label class="form-label" for="form3Examplev2">Nom*</label>
 														<input type="text" id="form3Examplev2" name="nom"
-															class="form-control form-control-lg"
-															value="${ utilisateur.getNom() }" disabled />
+															class="form-control form-control-lg" />
 													</div>
 
 												</div>
@@ -46,10 +68,8 @@
 
 													<div class="form-outline">
 														<label class="form-label" for="form3Examplev3">Prénom*</label>
-														<input type="text" id="form3Examplev3"
-															name="prenom"
-															class="form-control form-control-lg"
-															value="${ utilisateur.getPrenom() }" disabled />
+														<input type="text" id="form3Examplev3" name="prenom"
+															class="form-control form-control-lg" />
 
 													</div>
 
@@ -59,9 +79,8 @@
 											<div class="mb-4 pb-2">
 												<div class="form-outline">
 													<label class="form-label" for="form3Examplev4">Email*</label>
-													<input type="text" id="form3Examplev4"
-														name="email" class="form-control form-control-lg"
-														value="${ utilisateur.getEmail() }" disabled />
+													<input type="text" id="form3Examplev4" name="email"
+														class="form-control form-control-lg" />
 												</div>
 											</div>
 
@@ -100,8 +119,7 @@
 												<div class="form-outline form-white">
 													<label class="form-label" for="form3Examplea2">Adresse</label>
 													<input type="text" id="form3Examplea2" name="adresse"
-														class="form-control form-control-lg"
-														value="${ utilisateur.getAdresse() }" />
+														class="form-control form-control-lg" />
 
 												</div>
 											</div>
@@ -110,8 +128,7 @@
 												<div class="form-outline form-white">
 													<label class="form-label" for="form3Examplea3">Date
 														de Naissance </label> <input type="date" id="form3Examplea3"
-														name="dateNaissance" class="form-control form-control-lg"
-														value="${ utilisateur.getDateNaissance() }" />
+														name="dateNaissance" class="form-control form-control-lg" />
 												</div>
 											</div>
 
@@ -119,8 +136,7 @@
 												<div class="form-outline form-white">
 													<label class="form-label" for="form3Examplea6">Numéro
 														de téléphone</label> <input type="text" id="form3Examplea6"
-														name="numTel" class="form-control form-control-lg"
-														value="${ utilisateur.getNumTel() }" />
+														name="numTel" class="form-control form-control-lg" />
 												</div>
 											</div>
 
@@ -133,8 +149,12 @@
 															et Conditions</u></a> du site.
 												</label>
 											</div>
-											<button type="submit" class="btn btn-light btn-lg"
-												data-mdb-ripple-color="dark">Passer au paiement</button>
+
+											<button name="bouton" type="submit"
+												class="btn btn-light btn-lg" data-mdb-ripple-color="dark" value="ajouterPassager">Ajouter
+												un passager</button>
+											<button name="bouton" type="submit" class="btn btn-light btn-lg"
+												data-mdb-ripple-color="dark" value="payer">Passer au paiement</button>
 
 										</div>
 									</div>
@@ -145,12 +165,6 @@
 				</div>
 			</div>
 		</section>
-
-		<p>
-			<a class="btn btn-primary" data-bs-toggle="collapse"
-				href="#collapseExample" role="button" aria-expanded="false"
-				aria-controls="collapseExample"> Ajouter un passager </a>
-		</p>
 	</form>
 
 </body>

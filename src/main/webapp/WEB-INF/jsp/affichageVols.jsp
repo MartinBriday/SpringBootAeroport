@@ -24,7 +24,7 @@
         </thead>
         <c:forEach var="vol" items="${ listeVol }">
             <tr>
-                <form method="post">
+                <form method="post" action="vol_choisi" modelAttribute="vol">
                     <input type="hidden" id="IdVol" name="IdVol" value="${vol.getId()}">
                     <td>
                         <c:out value="${vol.getDateDepart()}"></c:out>
