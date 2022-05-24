@@ -3,6 +3,10 @@
 
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta name="viewport" content="width=device-width" />
+
 <title>Avion</title>
 
 <link
@@ -29,9 +33,9 @@
 			<img
 				src="https://github.com/MartinBriday/TP1_ORM/blob/main/avion1.PNG"
 				class="mx-auto d-block"> <br>
-				<h1>Coucou de Léo</h1>
+				
 			<p>Voyagez en toute sécurité</p>
-<p>coucou</p>
+		
 		</div>
 		<h2>Où souhaitez-vous voyager ?</h2>
 		<br>
