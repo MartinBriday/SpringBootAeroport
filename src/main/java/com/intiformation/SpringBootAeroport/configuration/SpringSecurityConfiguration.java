@@ -33,15 +33,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter
 	        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 	        .and()
 			.authorizeRequests()
-<<<<<<< HEAD
 			.antMatchers("/login", "/register_utilisateur_form", "/init", "/accueil").permitAll()
 //			.antMatchers("/admin/**").hasRole("ADMIN")
 			.antMatchers("/admin/**").hasAuthority("ADMIN")
-=======
-			.antMatchers("/login", "/register_utilisateur_form", "/init", "/accueil", "/affichageVols", "/vol_choisi", "/infos_client_passager", "/recupInfo", "/infos_passager_supplementaire").permitAll()
-			.antMatchers("/admin/**").hasRole("ADMIN")
-//			.antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
->>>>>>> branch 'current' of https://github.com/MartinBriday/SpringBootAeroport.git
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()

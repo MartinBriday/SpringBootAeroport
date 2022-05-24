@@ -89,13 +89,8 @@ public class MainController
 	}
 
 	@GetMapping("/register_utilisateur_form")
-<<<<<<< HEAD
 	public String getRegisterUtilisateurForm(Model model) {
 		model.addAttribute("isAdmin", false);
-=======
-	public String getRegisterUtilisateurForm()
-	{
->>>>>>> branch 'current' of https://github.com/MartinBriday/SpringBootAeroport.git
 		return "register_utilisateur";
 	}
 
