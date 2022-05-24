@@ -77,7 +77,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/register_utilisateur_form")
-	public String getRegisterUtilisateurForm() {
+	public String getRegisterUtilisateurForm(Model model) {
+		model.addAttribute("isAdmin", false);
 		return "register_utilisateur";
 	}
 	
